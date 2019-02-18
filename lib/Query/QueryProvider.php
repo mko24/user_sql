@@ -165,8 +165,8 @@ class QueryProvider implements \ArrayAccess
             Query::FIND_USERS =>
                 "SELECT $userColumns " .
                 "FROM $user u " .
-                "WHERE u.$uUID LIKE :$searchParam " .
-                "AND ( u.$uName LIKE :$searchParam " .
+                "WHERE ( u.$uUID LIKE :$searchParam " .
+                "OR u.$uName LIKE :$searchParam " .
                 "OR u.$uEmail LIKE :$searchParam ) " .
                 "AND " . (empty($uActive) ? "true" : (empty($reverseActiveOpt) ? "" : "NOT ") . "u." . $uActive) . " " .
                 "ORDER BY u.$uUID",
